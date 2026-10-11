@@ -102,4 +102,94 @@ Las funcionalidades de asignación automática y optimización de rutas se manti
 
 ### 7. Resultado esperado
 
-La misión queda registrada únicamente cuando se cumplen las validaciones requeridas. El solicitante recibe un código único para identificar la solicitud, mientras que las operaciones que no cumplen las condiciones establecidas son rechazadas con un mensaje que explica el motivo.
+La misión queda registrada únicamente cuando se cumplen las validaciones requeridas. El solicitante recibe un código único para identificar la solicitud, mientras que las operaciones que no cumplen las condiciones establecidas son rechazadas con un mensaje que explica el motivo. 
+
+## Reto 8: Identidad visual y diseño del panel de monitoreo
+
+### 1. Manual de identidad visual de SkyCampus
+
+El objetivo de la identidad visual de SkyCampus es transmitir confianza, profesionalismo y control tecnológico, manteniendo una interfaz clara para los operadores de drones.
+
+#### 1.1. Paleta de colores
+
+| Elemento | Color | Código HEX | Justificación |
+|---|---|---|---|
+| Color primario | Azul oscuro | `#17365D` | Transmite confianza, profesionalismo y control tecnológico. |
+| Color secundario | Azul medio | `#2563EB` | Destaca las acciones principales y los elementos interactivos. |
+| Fondo principal | Gris claro | `#F4F6F9` | Facilita la lectura y reduce el ruido visual. |
+| Tarjetas | Blanco | `#FFFFFF` | Separa visualmente la información de cada dron. |
+| Texto principal | Gris oscuro | `#1F2937` | Facilita la lectura de la información. |
+| Texto secundario | Gris pizarra | `#64748B` | Diferencia etiquetas y datos complementarios. |
+
+#### 1.2. Colores de estado
+
+| Estado | Código HEX | Significado |
+|---|---|---|
+| Disponible | `#16A34A` | El dron puede recibir una misión si cumple las condiciones operativas. |
+| En vuelo | `#2563EB` | El dron está ejecutando una misión. |
+| En carga | `#CA8A04` | El dron está recuperando batería. |
+| Fallo | `#DC2626` | El dron presenta un problema que requiere atención. |
+| Batería insuficiente | `#EA5808` | El dron tiene menos del 30 % de batería y no cumple el mínimo para una nueva asignación. |
+
+Los estados se identifican mediante texto y color para evitar que la interpretación dependa únicamente de la percepción cromática.
+
+#### 1.3. Tipografía
+
+- **Inter, peso 400:** textos, etiquetas y descripciones.
+- **Inter, peso 600:** títulos, encabezados y datos destacados.
+- **JetBrains Mono:** identificadores de drones y códigos de misión.
+
+#### 1.4. Tono de voz
+
+SkyCampus utiliza un tono técnico, profesional y directo. Los mensajes deben explicar claramente qué ocurrió y, cuando corresponda, qué acción debe realizar el operador.
+
+Ejemplo:
+
+> El dron D-04 tiene batería insuficiente (18 %). Mínimo requerido: 30 %.
+
+### 2. Mock del panel de monitoreo de la flota
+
+Se diseñó un mock de escritorio para el panel de monitoreo de SkyCampus, manteniendo la identidad visual definida y priorizando la consulta rápida de la información de la flota.
+
+#### 2.1. Captura del diseño
+
+<!-- Reemplazar la siguiente línea con la ruta de la imagen del mockup -->
+
+**Panel de monitoreo de SkyCampus:**
+
+![Mock del panel de monitoreo de la flota](docs/mockups/MU1.png)
+
+![Mock del panel de monitoreo de la flota](docs/mockups/MU2.png)
+
+#### 2.2. Información presentada
+
+El panel incluye una barra lateral de navegación, un encabezado, un resumen general de la flota y un listado de los cinco drones con sus identificadores, modelo, batería, estado y ubicación.
+
+| ID | Modelo | Batería | Estado | Ubicación |
+|---|---|---|---|---|
+| D-01 | DJI Mini 3 | 85 % | Disponible | Bloque A |
+| D-02 | DJI Mini 3 | 42 % | En vuelo | Biblioteca |
+| D-03 | DJI Mini 3 | 91 % | Disponible | Bloque C |
+| D-04 | DJI Mini 3 | 18 % | En carga | Bloque B |
+| D-05 | DJI Mini 3 | 67 % | Disponible | Bloque D |
+
+Los datos representan un escenario ilustrativo para el diseño del MVP.
+
+### 3. Evaluación mediante las heurísticas de Nielsen
+
+| N.º | Heurística | Aplicación en SkyCampus |
+|---|---|---|
+| 1 | Visibilidad del estado del sistema | El estado y el porcentaje de batería de cada dron se muestran directamente, sin necesidad de abrir otra pantalla. |
+| 2 | Correspondencia entre el sistema y el mundo real | Se utilizan términos comprensibles como disponible, en vuelo y en carga. |
+| 3 | Control y libertad del usuario | La cancelación de misiones pendientes debe contemplarse si esta funcionalidad forma parte del flujo implementado. |
+| 4 | Consistencia y estándares | Los colores y las etiquetas de los estados se mantienen consistentes en toda la interfaz. |
+| 5 | Prevención de errores | Las acciones de asignación se deshabilitan visualmente para drones no disponibles o con batería insuficiente. |
+| 6 | Reconocimiento antes que recuerdo | El operador puede consultar el identificador, la batería, el estado y la ubicación sin memorizar información de otras pantallas. |
+| 8 | Diseño estético y minimalista | Se prioriza la información necesaria para tomar decisiones operativas. |
+| 9 | Ayuda para reconocer y recuperarse de errores | Los mensajes explican el motivo del rechazo, por ejemplo, cuando un dron no alcanza el mínimo de batería. |
+
+### 4. Conclusión
+
+La identidad visual de SkyCampus proporciona una base consistente para diseñar las interfaces del sistema. El panel de monitoreo prioriza la visibilidad del estado de los drones, la consulta de la batería y la prevención de asignaciones incorrectas.
+
+El diseño mantiene el alcance del MVP: no incorpora servicios externos, control remoto ni optimización automática de rutas. La evaluación de las heurísticas permite identificar los aspectos de usabilidad que deben conservarse y verificarse en futuras iteraciones.
