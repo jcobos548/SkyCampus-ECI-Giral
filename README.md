@@ -193,3 +193,50 @@ Los datos representan un escenario ilustrativo para el diseño del MVP.
 La identidad visual de SkyCampus proporciona una base consistente para diseñar las interfaces del sistema. El panel de monitoreo prioriza la visibilidad del estado de los drones, la consulta de la batería y la prevención de asignaciones incorrectas.
 
 El diseño mantiene el alcance del MVP: no incorpora servicios externos, control remoto ni optimización automática de rutas. La evaluación de las heurísticas permite identificar los aspectos de usabilidad que deben conservarse y verificarse en futuras iteraciones.
+
+## Reto 9: Gestión del trabajo en Jira
+
+### 1. Objetivo
+
+Organizar el trabajo del MVP de SkyCampus mediante una jerarquía de actividades en Jira, incluyendo una épica, una feature y tres historias de usuario.
+
+### 2. Jerarquía de actividades
+
+- **Épica:** Desarrollo del MVP de SkyCampus.
+- **Feature:** FEAT-01: Gestión de flota. Se representó mediante una tarea porque el proyecto de Jira no tenía disponible el tipo de actividad Feature.
+- **HU-01:** Ver flota disponible.
+- **HU-02:** Asignar drone a misión.
+- **HU-03:** Cancelar misión pendiente.
+
+### 3. Historias de usuario
+
+**HU-01: Ver flota disponible**
+
+Como operador, quiero consultar los drones disponibles, su nivel de batería y su ubicación, para identificar cuáles pueden recibir una nueva misión.
+
+**HU-02: Asignar drone a misión**
+
+Como operador, quiero asignar un dron disponible a una misión de reparto, para gestionar la entrega de manera segura y evitar asignaciones que no cumplan las condiciones operativas.
+
+**Criterios de aceptación:**
+
+1. Dado un dron disponible con batería igual o superior al 30 %, cuando el operador lo asigna a una misión válida, el sistema registra la asignación y el dron deja de aparecer como disponible para otra misión.
+2. Dado un dron no disponible o con batería inferior al 30 %, cuando el operador intenta asignarlo, el sistema rechaza la operación e informa el motivo.
+
+**HU-03: Cancelar misión pendiente**
+
+Como operador, quiero cancelar una misión pendiente, para liberar el dron asignado cuando la entrega ya no sea necesaria.
+
+### 4. Subtareas de HU-02
+
+1. Implementar consulta de drones disponibles con batería mínima del 30 % usando Streams.
+2. Implementar validación de disponibilidad y batería antes de asignar una misión.
+3. Implementar el registro de la asignación y la actualización del estado del dron.
+
+### 5. Evidencias
+
+![Captura de la jerarquía de actividades en Jira](docs/evidencias/Jira.png)
+#### 
+### 6. Conclusión
+
+La organización del trabajo en Jira permite dividir el objetivo general de SkyCampus en funcionalidades e historias de usuario concretas. Las subtareas de HU-02 separan las responsabilidades técnicas de consulta, validación y registro de la asignación, facilitando el seguimiento y la implementación del trabajo.
