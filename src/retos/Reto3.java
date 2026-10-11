@@ -10,8 +10,14 @@ import model.Mision;
 import model.TipoCarga;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Reto3 {
+
+    private static final Logger LOGGER =
+            Logger.getLogger(Reto3.class.getName());
+
+    private static final String BLOQUE_C = "Bloque C";
 
     public static void main(String[] args) {
 
@@ -20,25 +26,25 @@ public class Reto3 {
                 "D-03",
                 85,
                 true,
-                "Bloque C",
+                BLOQUE_C,
                 3.0
         );
 
-        // Construir una mision con Builder
+        // Construir una misión con Builder
         Mision mision = new MisionBuilder()
                 .drone(drone)
-                .origen("Bloque C")
+                .origen(BLOQUE_C)
                 .destino("Biblioteca")
                 .tipoCarga(TipoCarga.PAQUETE_PEQUENO)
                 .notas("Entrega de prueba")
                 .build();
 
-        // Definir destinos validos
+        // Definir destinos válidos
         List<String> destinosValidos = List.of(
                 "Biblioteca",
                 "Bloque A",
                 "Bloque B",
-                "Bloque C",
+                BLOQUE_C,
                 "Bloque D"
         );
 
@@ -52,14 +58,14 @@ public class Reto3 {
         );
 
         // Ejecutar las validaciones
-        System.out.println("Validando mision...");
+        LOGGER.info("Validando misión...");
 
         boolean aceptada = cadena.validar(mision);
 
-        System.out.println(
+        LOGGER.info(
                 aceptada
-                        ? "Mision aceptada."
-                        : "Mision rechazada."
+                        ? "Misión aceptada."
+                        : "Misión rechazada."
         );
     }
 }
