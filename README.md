@@ -262,3 +262,90 @@ Representar los casos de uso principales del MVP de SkyCampus, identificando los
 
 ![Diagrama UML de casos de uso de SkyCampus](docs/diagramas/DiagramaCU.png)
 
+## Reto 11: Diseño del panel de monitoreo con IA
+
+### 1. Objetivo
+
+Diseñar un panel de monitoreo para SkyCampus utilizando inteligencia artificial, manteniendo la identidad visual definida previamente y teniendo en cuenta los datos del requisito funcional SC-01: Registrar misión.
+
+### 2. Identidad visual aplicada
+
+El diseño conserva la identidad visual establecida para SkyCampus.
+
+| Elemento | Valor |
+|---|---|
+| Azul principal | `#17365D` |
+| Azul de interacción | `#2563EB` |
+| Fondo principal | `#F4F6F9` |
+| Tarjetas | `#FFFFFF` |
+| Texto principal | `#1F2937` |
+| Texto secundario | `#64748B` |
+| Disponible | `#16A34A` |
+| En vuelo | `#2563EB` |
+| En carga | `#CA8A04` |
+| Fallo | `#DC2626` |
+| Batería insuficiente | `#EA5808` |
+
+**Tipografía:** Inter para títulos, etiquetas y textos; JetBrains Mono para identificadores de drones.
+
+### 3. Datos utilizados del requisito SC-01
+
+El panel muestra la información necesaria para que el operador consulte el estado de la flota y determine qué drones pueden recibir una misión.
+
+| ID | Modelo | Batería | Estado | Ubicación |
+|---|---|---:|---|---|
+| D-01 | DJI Mini 3 | 85 % | Disponible | Bloque A |
+| D-02 | DJI Mini 3 | 42 % | En vuelo | Biblioteca |
+| D-03 | DJI Mini 3 | 91 % | Disponible | Bloque C |
+| D-04 | DJI Mini 3 | 18 % | En carga | Bloque B |
+| D-05 | DJI Mini 3 | 67 % | Disponible | Bloque D |
+
+El mínimo operativo para asignar una nueva misión es del 30 % de batería. Los datos representan un escenario ilustrativo para el prototipo.
+
+### 4. Estados del panel generados con IA
+
+#### 4.1. Estado normal
+
+Presenta la flota con drones disponibles, en vuelo y en carga. El operador puede identificar rápidamente la batería, el estado y la ubicación de cada dron.
+
+![Estado 1: Panel normal](docs/mockups/MU3.png)
+
+![Estado 1: Panel normal](docs/mockups/MU4.png)
+
+#### 4.2. Estado de alerta
+
+Muestra un dron con estado de fallo, destacado mediante el color rojo, un mensaje de advertencia y la restricción de asignación de nuevas misiones.
+
+![Estado 2: Panel con fallo](docs/mockups/MU5.png)
+
+![Estado 2: Panel con fallo](docs/mockups/MU6.png)
+
+#### 4.3. Estado sin drones disponibles
+
+Representa una situación en la que todos los drones están ocupados. El panel muestra cero drones disponibles y un mensaje que explica por qué no es posible asignar una nueva misión.
+
+![Estado 3: Ningún dron disponible](docs/mockups/MU7.png)
+
+![Estado 3: Ningún dron disponible](docs/mockups/MU8.png)
+
+### 5. Evaluación mediante las heurísticas de Nielsen
+
+| N.º | Heurística | Aplicación en SkyCampus |
+|---|---|---|
+| 1 | Visibilidad del estado del sistema | El operador puede consultar el identificador, la batería, el estado y la ubicación de cada dron directamente desde el panel. |
+| 5 | Prevención de errores | La asignación se deshabilita para drones no disponibles o con batería inferior al 30 %, y se informa el motivo. |
+| 8 | Diseño estético y minimalista | Se prioriza la información operativa, con tarjetas organizadas, colores consistentes y una jerarquía visual clara. |
+
+### 7. Prompt utilizado
+
+Se utilizó un prompt contextual para solicitar a la IA el diseño del panel de monitoreo de SkyCampus. El prompt especificó la identidad visual, los datos de los cinco drones, las acciones del operador, los tres estados de la interfaz y las heurísticas de Nielsen que debían considerarse.
+
+El prompt completo se encuentra documentado como parte de la evidencia del reto.
+
+### 8. Conclusión
+
+El uso de inteligencia artificial permitió generar una propuesta visual del panel de monitoreo a partir de la identidad visual y los requisitos definidos para SkyCampus. La elaboración de los tres estados facilita evaluar cómo se presenta la información en situaciones normales, ante fallos y cuando no hay drones disponibles.
+
+La evaluación basada en las heurísticas de Nielsen permite identificar aspectos importantes para la usabilidad, como la visibilidad de los estados, la prevención de asignaciones incorrectas y la presentación clara de la información.
+
+Las pantallas generadas son prototipos visuales y no representan una integración funcional con la flota real.
