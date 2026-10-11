@@ -1,8 +1,11 @@
 package model;
 
 public record Mision(
-        String id,
-        TipoCarga tipoCarga,
-        EstadoMision estadoMision
+        Drone drone,
+        String origen,
+        String destino,
+        String notas,
+        int prioridad,
+        TipoCarga tipoCarga
 ) {
 }

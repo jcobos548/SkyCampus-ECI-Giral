@@ -9,11 +9,11 @@ public class Reto1 {
 
         // Crear la flota de drones
         List<Drone> flota = List.of(
-                new Drone("D-01", 85, true, "Bloque A"),
-                new Drone("D-02", 42, false, "Biblioteca"),
-                new Drone("D-03", 91, true, "Bloque C"),
-                new Drone("D-04", 18, true, "Bloque B"),
-                new Drone("D-05", 67, true, "Bloque D")
+                new Drone("D-01", 85, true, "Bloque A", 3.0),
+                new Drone("D-02", 42, false, "Biblioteca", 3.0),
+                new Drone("D-03", 91, true, "Bloque C", 3.0),
+                new Drone("D-04", 18, true, "Bloque B", 3.0),
+                new Drone("D-05", 67, true, "Bloque D", 3.0)
         );
 
         System.out.println("Flota de SkyCampus creada correctamente.");
