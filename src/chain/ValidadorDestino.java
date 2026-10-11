@@ -1,10 +1,15 @@
+
 package chain;
 
 import model.Mision;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ValidadorDestino extends Validador {
+
+    private static final Logger LOGGER =
+            Logger.getLogger(ValidadorDestino.class.getName());
 
     private final List<String> destinosValidos;
 
@@ -15,13 +20,11 @@ public class ValidadorDestino extends Validador {
     @Override
     protected boolean comprobar(Mision mision) {
         if (!destinosValidos.contains(mision.destino())) {
-            System.out.println(
-                    "Rechazada: el destino no existe."
-            );
+            LOGGER.warning("Rechazada: el destino no existe.");
             return false;
         }
 
-        System.out.println("Destino validado.");
+        LOGGER.info("Destino validado.");
         return true;
     }
 }

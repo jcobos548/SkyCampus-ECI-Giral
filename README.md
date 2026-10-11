@@ -349,3 +349,36 @@ El uso de inteligencia artificial permitió generar una propuesta visual del pan
 La evaluación basada en las heurísticas de Nielsen permite identificar aspectos importantes para la usabilidad, como la visibilidad de los estados, la prevención de asignaciones incorrectas y la presentación clara de la información.
 
 Las pantallas generadas son prototipos visuales y no representan una integración funcional con la flota real.
+
+## Reto 14: Análisis de calidad con SonarQube — Chimchar
+
+### Objetivo
+Integrar SonarQube con el proyecto SkyCampus-ECI para evaluar la calidad del código, identificar problemas de mantenibilidad y seguridad, y corregir los Code Smells detectados.
+
+### Trabajo realizado
+- Se configuró SonarQube para analizar el proyecto y se integró el reporte de cobertura generado por JaCoCo.
+- Se ejecutaron análisis de calidad sobre la rama `feature/Chimchar`.
+- Se corrigieron Code Smells relacionados con clases vacías, uso de `System.out.println()` y concatenación de cadenas en registros.
+- Se implementaron las clases de estrategia para seleccionar el dron disponible con mayor batería.
+- Se agregaron pruebas unitarias para aumentar la cobertura del código nuevo.
+- Se ejecutó `mvn clean verify` para comprobar que la compilación y las pruebas fueran exitosas.
+
+### Resultados obtenidos
+- **Quality Gate:** Passed.
+- **Cobertura del código nuevo:** 91,5 %.
+- **Bugs nuevos:** 0.
+- **Vulnerabilidades nuevas:** 0.
+- **Code Smells nuevos:** 0.
+- **Deuda técnica añadida:** 0.
+- **Duplicación del código nuevo:** 0 %.
+
+La cobertura aumentó del 35,6 % al 91,5 %, superando el objetivo del 80 % establecido para el reto.
+
+### Evidencia de SonarQube
+
+<!-- Insertar aquí la única captura del resultado final de SonarQube -->
+
+![Evidencia del análisis final de SonarQube](docs/evidencias/SQ1.png)
+
+### Conclusión
+La integración de SonarQube permitió evaluar la calidad y mantenibilidad del código de SkyCampus-ECI. Se implementaron mejoras, se añadieron pruebas unitarias y se alcanzó un 91,5 % de cobertura en código nuevo, con el Quality Gate aprobado. Queda pendiente revisar el Code Smell relacionado con el parámetro no utilizado.

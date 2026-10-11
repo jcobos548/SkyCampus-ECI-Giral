@@ -1,9 +1,16 @@
+
 package retos;
 
 import model.Drone;
+
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Reto1 {
+
+    private static final Logger LOGGER =
+            Logger.getLogger(Reto1.class.getName());
 
     public static void main(String[] args) {
 
@@ -16,8 +23,12 @@ public class Reto1 {
                 new Drone("D-05", 67, true, "Bloque D", 3.0)
         );
 
-        System.out.println("Flota de SkyCampus creada correctamente.");
-        System.out.println("Cantidad de drones: " + flota.size());
+        LOGGER.info("Flota de SkyCampus creada correctamente.");
+        LOGGER.log(
+                Level.INFO,
+                "Cantidad de drones: {0}",
+                flota.size()
+        );
 
         // CONSULTA 1: Drones disponibles con bateria >= 50%
         // Ordenados de mayor a menor bateria
@@ -29,7 +40,7 @@ public class Reto1 {
                 .map(Drone::id)
                 .toList();
 
-        System.out.println("Consulta 1: " + dronesDisponibles);
+        LOGGER.log(Level.INFO, "Consulta 1: {0}", dronesDisponibles);
 
         // CONSULTA 2: Verificar si hay un dron disponible en el Bloque C
         boolean hayDronEnBloqueC = flota.stream()
@@ -38,14 +49,22 @@ public class Reto1 {
                                 && drone.ubicacion().equals("Bloque C")
                 );
 
-        System.out.println("Consulta 2: " + hayDronEnBloqueC);
+        LOGGER.log(
+                Level.INFO,
+                "Consulta 2: {0}",
+                hayDronEnBloqueC
+        );
 
         // CONSULTA 3: Contar drones con bateria critica (< 20%)
         long dronesBateriaCritica = flota.stream()
                 .filter(drone -> drone.bateria() < 20)
                 .count();
 
-        System.out.println("Consulta 3: " + dronesBateriaCritica);
+        LOGGER.log(
+                Level.INFO,
+                "Consulta 3: {0}",
+                dronesBateriaCritica
+        );
 
         // CONSULTA 4: Transformar cada dron en un texto
         List<String> informacionDrones = flota.stream()
@@ -53,6 +72,10 @@ public class Reto1 {
                         drone.id() + ": " + drone.bateria() + "%")
                 .toList();
 
-        System.out.println("Consulta 4: " + informacionDrones);
+        LOGGER.log(
+                Level.INFO,
+                "Consulta 4: {0}",
+                informacionDrones
+        );
     }
 }
