@@ -240,3 +240,25 @@ Como operador, quiero cancelar una misión pendiente, para liberar el dron asign
 ### 6. Conclusión
 
 La organización del trabajo en Jira permite dividir el objetivo general de SkyCampus en funcionalidades e historias de usuario concretas. Las subtareas de HU-02 separan las responsabilidades técnicas de consulta, validación y registro de la asignación, facilitando el seguimiento y la implementación del trabajo.
+
+## Reto 10: Diagrama de casos de uso
+
+### Objetivo
+
+Representar los casos de uso principales del MVP de SkyCampus, identificando los actores, las funcionalidades del sistema y las relaciones entre ellas.
+
+### Actores
+
+- **Operador:** consulta la flota disponible y participa en el registro y asignación de misiones.
+- **Solicitante:** solicita una misión de reparto.
+- **Admin:** puede cancelar misiones pendientes.
+
+### Relaciones
+
+- **`<<include>>`:** registrar una misión incluye validar la disponibilidad del dron y ejecutar las acciones necesarias para registrar y asignar la misión.
+- **`<<extend>>`:** enviar una alerta de batería baja se ejecuta únicamente cuando se cumple la condición definida: batería inferior al 40 %.
+
+### Evidencia del diagrama
+
+![Diagrama UML de casos de uso de SkyCampus](docs/diagramas/DiagramaCU.png)
+
