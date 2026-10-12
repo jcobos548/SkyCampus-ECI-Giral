@@ -455,3 +455,9 @@ El diseño aplica las siguientes heurísticas de usabilidad:
 ### Evidencia de la validación UX
 
 ![Validación de las heurísticas de Nielsen](docs/mockups/MU24.png)
+
+## Reto 12: TDD y Mockito
+
+### Evidencia de ejecución
+
+![Evidencia Reto 12](docs/evidencias/Reto12.png)
