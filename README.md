@@ -121,3 +121,9 @@ Se implementó una prueba automatizada que crea una nueva implementación de `Es
 **Captura de evidencia:**
 
 ![Evidencia del Reto 4](docs/evidencias/Reto4.png)
+
+## Reto 5. Diagrama de contexto C4 — SkyCampus v2
+
+### Diagrama de contexto
+
+![Evidencia del Reto 5](docs/diagramas/DCV2.png)
