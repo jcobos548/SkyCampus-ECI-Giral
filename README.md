@@ -95,3 +95,29 @@ La evidencia debe mostrar la ejecución satisfactoria de las pruebas relacionada
 
 El reto permite aplicar dos patrones de diseño para separar los criterios de asignación de drones y desacoplar las notificaciones de cambios de estado. La solución facilita la extensión del sistema y reduce la necesidad de modificar clases existentes cuando se incorporan nuevos comportamientos.
 
+## Reto 4. Aplicación de principios SOLID
+
+### 1. Comparación entre el MVP y la arquitectura v2
+
+#### SRP — Single Responsibility Principle (Responsabilidad única)
+
+- **MVP:** `GestorDrone` violaba este principio porque concentraba múltiples responsabilidades, como asignar misiones, conectarse a MySQL, enviar correos, generar reportes PDF y calcular rutas.
+- **Arquitectura v2:** las responsabilidades se distribuyeron en clases y servicios especializados. Por ejemplo, `AsignadorMision` se encarga de asignar misiones y `SistemaLog` de registrar eventos. De esta manera, cada componente tiene una responsabilidad más específica.
+
+#### OCP — Open/Closed Principle (Abierto/cerrado)
+
+- **MVP:** `GestorDrone` utilizaba condiciones para determinar el comportamiento según el tipo de ruta. Agregar un nuevo tipo requería modificar el código existente.
+- **Arquitectura v2:** el patrón Strategy permite incorporar nuevas implementaciones de `EstrategiaAsignacion` sin modificar `GestorMisiones`. Así, el comportamiento puede extenderse mediante nuevas clases.
+
+#### DIP — Dependency Inversion Principle (Inversión de dependencias)
+
+- **MVP:** `GestorDrone` dependía directamente de detalles de infraestructura, como `DriverManager` y la conexión concreta a MySQL, lo que aumentaba el acoplamiento.
+- **Arquitectura v2:** los componentes utilizan abstracciones como `EstrategiaAsignacion` y `ObservadorDrone`. Esto permite depender de contratos en lugar de acoplarse directamente a implementaciones concretas.
+
+### 2. Evidencia de la prueba de extensibilidad
+
+Se implementó una prueba automatizada que crea una nueva implementación de `EstrategiaAsignacion`, la inyecta en `GestorMisiones` y verifica que el gestor utiliza esa estrategia correctamente, sin necesidad de modificar su código.
+
+**Captura de evidencia:**
+
+![Evidencia del Reto 4](docs/evidencias/Reto4.png)
