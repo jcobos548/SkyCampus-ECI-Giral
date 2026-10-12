@@ -14,7 +14,7 @@ public class AsignadorMision {
 
     private static final int BATERIA_MINIMA = 20;
 
-    // Funcionalidad de Juan: asignación automática de drones.
+    // Juan: asignación automática de drones.
     public Optional<Drone> asignarDrone(Mision mision, List<Drone> drones) {
         if (mision == null || drones == null || drones.isEmpty()) {
             return Optional.empty();
@@ -41,7 +41,7 @@ public class AsignadorMision {
         };
     }
 
-    // Funcionalidad de María: alertas para misiones urgentes pendientes.
+    // María: alertas de misiones urgentes pendientes.
     public List<String> generarAlertas(List<Mision> misiones) {
         if (misiones == null || misiones.isEmpty()) {
             return List.of();
