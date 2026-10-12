@@ -381,3 +381,8 @@ La siguiente evidencia debe mostrar el Sprint 1 de SkyCampus v2 con las cinco hi
 
 ![Evidencia de planificación del Sprint 1 en Jira](docs/evidencias/Reto9.png)
 
+## Reto 10. Diagrama de casos de uso — SkyCampus v2
+
+### Evidencia
+
+![Diagrama de casos de uso del módulo de misiones v2](docs/diagramas/CUV2.png)
