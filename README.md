@@ -196,3 +196,107 @@ Los requisitos se deben verificar mediante pruebas que comprueben tanto el compo
 - **RNF-03:** medir el tiempo de respuesta de la consulta meteorológica y comprobar el cumplimiento del límite de 2 segundos en al menos el 95 % de las solicitudes bajo las condiciones definidas.
 - **RNF-04:** verificar que todas las acciones de mantenimiento queden registradas con los campos obligatorios.
 
+# Reto 7. Plantilla DOSW — Requisito funcional SC-07
+
+## 1. Información general
+
+**Código:** SC-07
+
+**Nombre:** Asignar automáticamente dron a misión
+
+**Actor principal:** Operador de drones.
+
+**Descripción:** El sistema asigna automáticamente un dron apto a una misión de reparto, considerando las condiciones meteorológicas, la disponibilidad de la flota, la batería, la capacidad de carga y la estrategia de selección activa. Una vez realizada la asignación, se notifica a los observadores correspondientes.
+
+## 2. Precondiciones
+
+- Debe existir una solicitud de misión registrada con los datos del paquete y el destino.
+- Debe existir una estrategia de selección de drones configurada y activa.
+- El sistema debe tener acceso a la información de disponibilidad, batería y capacidad de los drones.
+- Debe ser posible consultar las condiciones meteorológicas antes de autorizar el lanzamiento.
+
+## 3. Datos de entrada
+
+| Nombre | Tipo de campo | Reglas | Obligatorio |
+|---|---|---|---|
+| paquete | — | Contiene los datos del paquete que se transportará | Sí |
+| paquete.peso | `Integer` | Entre 1 y 2000 gramos | Sí |
+| paquete.tipo | `Enum(SOBRE,CARPETA,LIBRO,EQUIPO)` | Debe corresponder a un tipo permitido | Sí |
+| paquete.prioridad | `Enum(URGENTE,NORMAL,BAJO)` | Determina la prioridad de la misión | Sí |
+| destino | `Enum(BLOQUE_A,BLOQUE_B,BLOQUE_C,BLOQUE_D,BIBLIOTECA)` | Debe corresponder a un destino válido | Sí |
+
+## 4. Datos de salida
+
+| Nombre | Tipo de campo | Reglas | Obligatorio |
+|---|---|---|---|
+| droneAsignado | — | Dron seleccionado por el sistema según la estrategia activa | No (salida) |
+| droneAsignado.id | `String` | Formato `D-XX` | No (salida) |
+| droneAsignado.bateria | `Integer` | Porcentaje de batería del dron asignado | No (salida) |
+
+Si la asignación no puede realizarse, el sistema debe informar el motivo y no devolver un dron asignado.
+
+## 5. Flujo básico
+
+1. El operador solicita la asignación automática de un dron para una misión registrada. El sistema recibe y valida los datos del paquete y el destino.
+2. El sistema consulta la API Meteorológica para verificar las condiciones de viento y lluvia antes del lanzamiento.
+3. El sistema filtra los drones disponibles y aptos, descartando aquellos que no cumplan las condiciones meteorológicas, el mínimo de batería, la capacidad de carga o las restricciones aplicables.
+4. El sistema aplica la estrategia de selección activa a los drones aptos, valida nuevamente la disponibilidad y los requisitos de asignación, y asigna el dron seleccionado a la misión.
+5. El sistema devuelve los datos del dron asignado y notifica a los observadores correspondientes, como el panel del operador y el sistema de registro.
+
+## 6. Flujos alternativos
+
+### FA-01. No hay drones disponibles o aptos
+
+1. Durante el filtrado, el sistema comprueba que no existen drones que cumplan las condiciones necesarias.
+2. El sistema cancela la asignación.
+3. El sistema informa al operador que no hay drones disponibles o aptos para la misión.
+4. No se registra ningún dron como asignado.
+
+### FA-02. Condiciones climáticas adversas
+
+1. El sistema consulta las condiciones meteorológicas.
+2. La API indica que las condiciones no son seguras para volar, por ejemplo, debido a viento fuerte o lluvia incompatible con la operación.
+3. El sistema impide continuar con la asignación destinada al lanzamiento.
+4. El sistema informa al operador que la misión no puede lanzarse por condiciones meteorológicas adversas.
+
+### FA-03. El paquete supera la capacidad máxima
+
+1. El sistema compara el peso del paquete con la capacidad de carga de los drones disponibles.
+2. Comprueba que ningún dron apto puede transportar el paquete.
+3. El sistema no asigna un dron.
+4. El sistema informa al operador que el paquete supera la capacidad disponible de la flota.
+
+## 7. Reglas de negocio
+
+**RN-01. Batería mínima:** un dron solo puede ser considerado apto para una asignación si tiene al menos un 30 % de batería.
+
+**RN-02. Restricción del dron CARGO:** el dron de tipo CARGO no puede utilizarse para transportar paquetes cuyo peso sea inferior a 100 gramos.
+
+**RN-03. Capacidad de carga:** un dron no puede ser asignado a una misión si el peso del paquete supera su capacidad máxima de carga.
+
+**RN-04. Seguridad meteorológica:** no se debe autorizar el lanzamiento cuando las condiciones meteorológicas sean adversas.
+
+**RN-05. Disponibilidad:** un dron no puede recibir una nueva misión si no está disponible para ejecutarla.
+
+**RN-06. Estrategia de selección:** el sistema debe aplicar la estrategia activa únicamente después de filtrar los drones que cumplen las condiciones de aptitud.
+
+## 8. Notificación a observadores
+
+Una vez confirmada la asignación, el sistema debe notificar a los observadores registrados para que actualicen la información de la misión.
+
+La notificación debe incluir, como mínimo:
+
+- Identificador de la misión.
+- Identificador del dron asignado.
+- Estado actualizado de la asignación.
+
+Si la asignación falla, el sistema debe informar el resultado sin notificar una asignación exitosa inexistente.
+
+## 9. Criterios de aceptación
+
+- **CA-01:** Dada una misión válida y al menos un dron apto, cuando se solicite la asignación automática, el sistema selecciona un dron mediante la estrategia activa y devuelve sus datos.
+- **CA-02:** Dado un dron con menos del 30 % de batería, cuando se evalúe su aptitud, el sistema lo descarta.
+- **CA-03:** Dado un paquete de menos de 100 gramos, cuando se evalúe un dron CARGO, el sistema no lo selecciona.
+- **CA-04:** Dadas condiciones meteorológicas adversas, cuando se consulte el clima, el sistema impide continuar con el lanzamiento e informa al operador.
+- **CA-05:** Dado que ningún dron tiene capacidad suficiente para el paquete, cuando se intente la asignación, el sistema informa que no existe una opción apta.
+- **CA-06:** Dada una asignación exitosa, cuando el sistema confirme el dron seleccionado, los observadores reciben la notificación correspondiente.
