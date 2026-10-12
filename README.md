@@ -300,3 +300,39 @@ Si la asignación falla, el sistema debe informar el resultado sin notificar una
 - **CA-04:** Dadas condiciones meteorológicas adversas, cuando se consulte el clima, el sistema impide continuar con el lanzamiento e informa al operador.
 - **CA-05:** Dado que ningún dron tiene capacidad suficiente para el paquete, cuando se intente la asignación, el sistema informa que no existe una opción apta.
 - **CA-06:** Dada una asignación exitosa, cuando el sistema confirme el dron seleccionado, los observadores reciben la notificación correspondiente.
+
+## Reto 8. Del manual básico al sistema de diseño — SkyCampus v2
+
+### 1. Panel de flota
+
+![Panel de flota de SkyCampus v2](docs/mockups/MU1.png)
+
+![Panel de flota de SkyCampus v2](docs/mockups/MU2.png)
+
+![Panel de flota de SkyCampus v2](docs/mockups/MU3.png)
+
+### 2. Detalle de misión y asignación automática
+
+![Detalle de misión](docs/mockups/MU4.png)
+
+![Detalle de misión](docs/mockups/MU5.png)
+
+### 3. Confirmación de asignación
+
+![Confirmación de asignación](docs/mockups/MU6.png)
+
+![Confirmación de asignación](docs/mockups/MU7.png)
+
+### 4. Componentes reutilizables y leyes UX
+
+![Sistema de diseño y variantes de componentes](docs/mockups/MU8.png)
+
+![Sistema de diseño y variantes de componentes](docs/mockups/MU9.png)
+
+![Sistema de diseño y variantes de componentes](docs/mockups/MU10.png)
+
+**Aplicación de las leyes UX**
+
+- **Ley de Fitts:** el botón «Cancelar misión» tiene una ubicación visible y un área de interacción amplia para facilitar su uso en situaciones de emergencia, con confirmación para evitar acciones accidentales.
+- **Ley de Hick:** los drones se agrupan por estado operativo y se ofrecen filtros para reducir las opciones que el operador necesita evaluar.
+- **Número de Miller:** el panel limita a siete las notificaciones pendientes de confirmación y prioriza las alertas importantes.
