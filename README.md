@@ -336,3 +336,48 @@ Si la asignación falla, el sistema debe informar el resultado sin notificar una
 - **Ley de Fitts:** el botón «Cancelar misión» tiene una ubicación visible y un área de interacción amplia para facilitar su uso en situaciones de emergencia, con confirmación para evitar acciones accidentales.
 - **Ley de Hick:** los drones se agrupan por estado operativo y se ofrecen filtros para reducir las opciones que el operador necesita evaluar.
 - **Número de Miller:** el panel limita a siete las notificaciones pendientes de confirmación y prioriza las alertas importantes.
+
+## Reto 9. Planificación del Sprint 1 — SkyCampus v2
+
+### 1. Objetivo del sprint
+
+Implementar las funcionalidades iniciales de SkyCampus v2 para la asignación automática de drones, la consulta de condiciones meteorológicas, las alertas por fallos, la gestión de técnicos de mantenimiento y la visualización organizada de la flota.
+
+### 2. Historias de usuario y estimación
+
+Para el Sprint 1 se seleccionaron cinco historias de usuario, estimadas mediante la escala Fibonacci y ajustadas a una velocidad planificada de 20 puntos.
+
+| ID | Historia de usuario | Prioridad | Story Points |
+|---|---|---|---:|
+| SC-07 | Asignación automática de drones | Must Have | 5 |
+| SC-08 | Alertas automáticas por fallos | Must Have | 5 |
+| SC-09 | Consulta de condiciones meteorológicas | Must Have | 3 |
+| SC-10 | Gestión de técnicos de mantenimiento | Should Have | 5 |
+| SC-11 | Visualización de la flota agrupada por estado | Should Have | 2 |
+| | **Total planificado** | | **20** |
+
+### 3. Criterios de aceptación
+
+Cada historia de usuario cuenta con dos criterios de aceptación redactados en formato Gherkin, utilizando las estructuras Dado, Cuando y Entonces. Estos criterios especifican las condiciones iniciales, las acciones que ejecuta el sistema y los resultados esperados para validar el funcionamiento de cada funcionalidad.
+
+Los criterios cubren la asignación de drones elegibles, la generación de alertas ante fallos, la consulta meteorológica, el registro de técnicos y la visualización y filtrado de la flota.
+
+### 4. Definition of Done (DoD) — Equipo SkyCampus v2
+
+Una historia de usuario se considera terminada cuando cumple todas las siguientes condiciones:
+
+- El código ha sido revisado y aprobado mediante un Pull Request por al menos otro miembro del equipo.
+- Las pruebas unitarias pasan y la cobertura medida con JaCoCo es igual o superior al 80 %.
+- SonarQube reporta cero bugs y cero vulnerabilidades.
+- Todos los criterios de aceptación Gherkin de la historia pasan satisfactoriamente.
+- Los cambios se integran en la rama `develop` siguiendo el flujo GitFlow acordado por el equipo.
+- El diagrama de contexto y la plantilla DOSW se actualizan cuando cambian los requisitos funcionales.
+- La compilación y las pruebas de integración relevantes se ejecutan correctamente.
+- La documentación técnica y el README se actualizan cuando corresponde.
+
+### 5. Evidencia de planificación en Jira
+
+La siguiente evidencia debe mostrar el Sprint 1 de SkyCampus v2 con las cinco historias de usuario, sus estimaciones Fibonacci y el total de 20 puntos planificados.
+
+![Evidencia de planificación del Sprint 1 en Jira](docs/evidencias/Reto9.png)
+
