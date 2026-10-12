@@ -386,3 +386,72 @@ La siguiente evidencia debe mostrar el Sprint 1 de SkyCampus v2 con las cinco hi
 ### Evidencia
 
 ![Diagrama de casos de uso del módulo de misiones v2](docs/diagramas/CUV2.png)
+
+## Reto 11. Diseño del flujo de asignación de misiones con IA
+
+### Objetivo
+
+Diseñar con inteligencia artificial el flujo de asignación de misiones de SkyCampus v2, manteniendo la identidad visual de las pantallas desarrolladas en los retos anteriores. El diseño contempla el panel de flota, el formulario de misión, la confirmación de asignación y los estados de error.
+
+### 1. Pantallas del flujo
+
+**Panel de flota:** presenta los 20 drones agrupados por estado operativo, con información de identificación y batería. Desde esta pantalla, el operador puede iniciar una nueva misión.
+
+![Panel de flota](docs/mockups/MU11.png)
+
+![Panel de flota](docs/mockups/MU12.png)
+
+![Panel de flota](docs/mockups/MU13.png)
+
+![Panel de flota](docs/mockups/MU14.png)
+
+![Panel de flota](docs/mockups/MU15.png)
+
+![Panel de flota](docs/mockups/MU16.png)
+
+**Formulario de misión:** permite ingresar origen, destino, peso, tipo de paquete y prioridad. También muestra los drones aptos según las condiciones de la misión.
+
+![Formulario de misión](docs/mockups/MU17.png)
+
+![Formulario de misión](docs/mockups/MU18.png)
+
+**Confirmación de misión:** muestra el dron seleccionado automáticamente, su batería, la ruta estimada y el tiempo estimado de llegada (ETA). El operador puede confirmar o cancelar la misión.
+
+![Confirmación de misión](docs/mockups/MU19.png)
+
+![Confirmación de misión](docs/mockups/MU20.png)
+
+**Confirmación exitosa de la misión:** después de pulsar “Confirmar misión”, el sistema muestra un mensaje de éxito que informa que la misión fue confirmada y presenta el resumen del dron asignado y los datos principales de la misión.
+
+![Confirmación exitosa de la misión](docs/mockups/MU21.png)
+
+![Confirmación exitosa de la misión](docs/mockups/MU22.png)
+
+### 2. Estados de error
+
+Se diseñaron tres estados para prevenir errores y orientar al operador:
+
+- **Sin drones disponibles:** informa que no hay drones aptos y permite programar la misión para más tarde o modificarla.
+- **Condiciones climáticas adversas:** bloquea el avance hacia la confirmación y explica por qué no se puede autorizar el vuelo.
+- **Paquete demasiado pesado:** informa que el peso supera la capacidad disponible de la flota y permite modificar los datos de la misión.
+
+![Estados de error](docs/mockups/MU23.png)
+
+### 3. Principios de usabilidad de Nielsen
+
+El diseño aplica las siguientes heurísticas de usabilidad:
+
+1. **Visibilidad del estado del sistema:** muestra los estados operativos de los drones, la batería y las validaciones de la misión.
+2. **Correspondencia entre el sistema y el mundo real:** utiliza términos conocidos como origen, destino, paquete y tiempo estimado de llegada.
+3. **Control y libertad del usuario:** permite volver al formulario, cancelar y modificar la misión antes de confirmarla.
+4. **Consistencia y estándares:** conserva los estilos visuales, colores, tarjetas y componentes de las pantallas anteriores de SkyCampus.
+5. **Prevención de errores:** impide continuar cuando los datos son inválidos, no existen drones aptos o el clima es adverso.
+6. **Reconocimiento antes que recuerdo:** presenta las opciones de destino, los estados y la información relevante directamente en pantalla.
+7. **Flexibilidad y eficiencia de uso:** permite filtrar la flota y consultar los drones aptos para la misión.
+8. **Diseño estético y minimalista:** organiza la información por etapas y prioriza los datos necesarios para cada decisión.
+9. **Ayudar a reconocer, diagnosticar y recuperarse de errores:** explica la causa de cada error y ofrece acciones para corregirlo.
+10. **Ayuda y documentación:** proporciona mensajes y explicaciones sobre la selección automática y las restricciones de asignación.
+
+### Evidencia de la validación UX
+
+![Validación de las heurísticas de Nielsen](docs/mockups/MU24.png)
